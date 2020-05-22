@@ -63,8 +63,14 @@ class PasswordMenu extends StatelessWidget {
   List<FlatButton> accountImages = [
     FlatButton(
       onPressed: () {},
-      child: Center(child: Text('Twitter')),
-    )
+      child: Center(
+        child: Image.asset(
+          'images/twitter logo.png',
+          width: 120,
+          height: 120,
+        ),
+      ),
+    ),
   ];
   @override
   Widget build(BuildContext context) {
