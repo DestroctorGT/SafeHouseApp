@@ -9,10 +9,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      initialRoute: '/',
+      initialRoute: MyHomePage.routeName,
       routes: {
-        '/': (context) => MyHomePage(),
-        '/second': (context) => PasswordMenu()
+        MyHomePage.routeName: (context) => MyHomePage(),
+        PasswordMenu.routeName: (context) => PasswordMenu(),
       },
     );
   }
@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
+
+  static const routeName = '/myHomePage';
 
   final String title;
 
@@ -51,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/second');
+          Navigator.pushNamed(context, PasswordMenu.routeName);
         },
         child: Icon(Icons.add),
       ),
@@ -60,12 +62,23 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class PasswordMenu extends StatelessWidget {
+  static const routeName = '/passwordMenu';
   List<FlatButton> accountImages = [
     FlatButton(
       onPressed: () {},
       child: Center(
         child: Image.asset(
           'images/twitter logo.png',
+          width: 120,
+          height: 120,
+        ),
+      ),
+    ),
+    FlatButton(
+      onPressed: () {},
+      child: Center(
+        child: Image.asset(
+          'images/steam logo.png',
           width: 120,
           height: 120,
         ),
