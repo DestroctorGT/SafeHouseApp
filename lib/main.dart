@@ -8,9 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: MyHomePage(title: 'SafeHouse'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/second': (context) => PasswordMenu()
+      },
     );
   }
 }
@@ -37,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text(widget.title)),
+        title: Center(child: Text('SafeHouse')),
       ),
       body: GridView.count(
         padding: EdgeInsets.all(12),
@@ -47,9 +50,35 @@ class _MyHomePageState extends State<MyHomePage> {
         children: passwordCards,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/second');
+        },
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+    );
+  }
+}
+
+class PasswordMenu extends StatelessWidget {
+  List<FlatButton> accountImages = [
+    FlatButton(
+      onPressed: () {},
+      child: Center(child: Text('Twitter')),
+    )
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text('SafeHouse')),
+      ),
+      body: GridView.count(
+        padding: EdgeInsets.all(12),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        crossAxisCount: 2,
+        children: accountImages,
+      ),
     );
   }
 }
