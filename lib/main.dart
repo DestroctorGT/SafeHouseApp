@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'accountImagesManager.dart';
 import 'routesManager.dart';
+import 'package:get/get.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,13 +12,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData.dark(),
       initialRoute: routes.routeNameFirst(),
-      routes: {
-        routes.routeNameFirst(): (context) => MyHomePage(),
-        routes.routeNameSecond(): (context) => PasswordMenu(),
-        routes.routeNameThird(): (context) => CardGenerator(),
+      namedRoutes: {
+        routes.routeNameFirst(): GetRoute(page: MyHomePage()),
+        routes.routeNameSecond(): GetRoute(page: PasswordMenu()),
+        routes.routeNameThird(): GetRoute(page: CardGenerator()),
       },
     );
   }
@@ -55,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, routes.routeNameSecond());
+          Get.toNamed(routes.routeNameSecond());
         },
         child: Icon(Icons.add),
       ),
