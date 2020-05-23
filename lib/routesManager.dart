@@ -1,7 +1,7 @@
 class RoutesManager {
-  static const _routeNameFirst = '/myHomePage';
-  static const _routeNameSecond = '/passwordMenu';
-  static const _routeNameThird = '/cardGenerator';
+  static const _routeNameFirst = '/MyHomePage';
+  static const _routeNameSecond = '/PasswordMenu';
+  static const _routeNameThird = '/CardGenerator';
 
   String routeNameFirst() => _routeNameFirst;
   String routeNameSecond() => _routeNameSecond;
