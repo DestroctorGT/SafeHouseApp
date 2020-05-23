@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'accountImagesManager.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       routes: {
         MyHomePage.routeName: (context) => MyHomePage(),
         PasswordMenu.routeName: (context) => PasswordMenu(),
+        CardGenerator.routeName: (context) => CardGenerator(),
       },
     );
   }
@@ -37,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     )
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,28 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class PasswordMenu extends StatelessWidget {
   static const routeName = '/passwordMenu';
-  List<FlatButton> accountImages = [
-    FlatButton(
-      onPressed: () {},
-      child: Center(
-        child: Image.asset(
-          'images/twitter logo.png',
-          width: 120,
-          height: 120,
-        ),
-      ),
-    ),
-    FlatButton(
-      onPressed: () {},
-      child: Center(
-        child: Image.asset(
-          'images/steam logo.png',
-          width: 120,
-          height: 120,
-        ),
-      ),
-    ),
-  ];
+  AccountImagesManager iManager = AccountImagesManager();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,11 +72,22 @@ class PasswordMenu extends StatelessWidget {
         title: Center(child: Text('SafeHouse')),
       ),
       body: GridView.count(
-        padding: EdgeInsets.all(12),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: accountImages,
+          padding: EdgeInsets.all(12),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: iManager.imagesReturn()),
+    );
+  }
+}
+
+class CardGenerator extends StatelessWidget {
+  static const routeName = '/cardGenerator';
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text('SafeHouse')),
       ),
     );
   }
