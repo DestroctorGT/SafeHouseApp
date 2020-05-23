@@ -72,11 +72,12 @@ class PasswordMenu extends StatelessWidget {
         title: Center(child: Text('SafeHouse')),
       ),
       body: GridView.count(
-          padding: EdgeInsets.all(12),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: iManager.imagesReturn()),
+        padding: EdgeInsets.all(12),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        crossAxisCount: 2,
+        children: iManager.imagesReturn(),
+      ),
     );
   }
 }
