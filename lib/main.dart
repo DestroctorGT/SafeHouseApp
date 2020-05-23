@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'accountImagesManager.dart';
+import 'routesManager.dart';
 
 void main() => runApp(MyApp());
+
+RoutesManager routes = RoutesManager();
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -10,11 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      initialRoute: MyHomePage.routeName,
+      initialRoute: routes.routeNameFirst(),
       routes: {
-        MyHomePage.routeName: (context) => MyHomePage(),
-        PasswordMenu.routeName: (context) => PasswordMenu(),
-        CardGenerator.routeName: (context) => CardGenerator(),
+        routes.routeNameFirst(): (context) => MyHomePage(),
+        routes.routeNameSecond(): (context) => PasswordMenu(),
+        routes.routeNameThird(): (context) => CardGenerator(),
       },
     );
   }
@@ -22,8 +25,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  static const routeName = '/myHomePage';
 
   final String title;
 
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, PasswordMenu.routeName);
+          Navigator.pushNamed(context, routes.routeNameSecond());
         },
         child: Icon(Icons.add),
       ),
@@ -63,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class PasswordMenu extends StatelessWidget {
-  static const routeName = '/passwordMenu';
   AccountImagesManager iManager = AccountImagesManager();
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,6 @@ class PasswordMenu extends StatelessWidget {
 }
 
 class CardGenerator extends StatelessWidget {
-  static const routeName = '/cardGenerator';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
