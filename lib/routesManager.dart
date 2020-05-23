@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class RoutesManager {
   static const _routeNameFirst = '/myHomePage';
   static const _routeNameSecond = '/passwordMenu';
