@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'routesManager.dart';
+
+RoutesManager routes = RoutesManager();
 
 class AccountImagesManager {
   List<FlatButton> _accountImages = [
