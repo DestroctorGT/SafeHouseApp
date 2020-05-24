@@ -9,7 +9,7 @@ class AccountImagesManager {
   List<FlatButton> _accountImages = [
     FlatButton(
       onPressed: () {
-        _nextRoute();
+        Get.toNamed(routes.routeNameThird(), arguments: _accountImagesNames[0]);
       },
       child: Center(
         child: new Image.asset(
@@ -21,7 +21,7 @@ class AccountImagesManager {
     ),
     FlatButton(
       onPressed: () {
-        _nextRoute();
+        Get.toNamed(routes.routeNameThird(), arguments: _accountImagesNames[1]);
       },
       child: Center(
         child: new Image.asset(
@@ -38,6 +38,7 @@ class AccountImagesManager {
   }
 }
 
-void _nextRoute() {
-  Get.toNamed(routes.routeNameThird());
-}
+List<String> _accountImagesNames = [
+  'images/twitter logo.png',
+  'images/steam logo.png'
+];
