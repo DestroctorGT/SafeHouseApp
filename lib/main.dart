@@ -90,7 +90,27 @@ class CardGenerator extends StatelessWidget {
       appBar: AppBar(
         title: Center(child: Text('SafeHouse')),
       ),
-      body: Center(child: Text(Get.arguments)),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(
+            height: 50,
+          ),
+          Container(
+            child: new Image.asset(
+              Get.arguments,
+              width: 200,
+              height: 200,
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(16),
+              labelText: 'User',
+            ),
+          )
+        ],
+      ),
     );
   }
 }
