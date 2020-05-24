@@ -99,15 +99,46 @@ class CardGenerator extends StatelessWidget {
           Container(
             child: new Image.asset(
               Get.arguments,
-              width: 200,
-              height: 200,
+              width: 150,
+              height: 150,
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
           TextField(
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(16),
+              contentPadding: EdgeInsets.all(20),
+              filled: true,
               labelText: 'User',
             ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(20),
+              filled: true,
+              labelText: 'Password',
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              RaisedButton(
+                padding: EdgeInsets.all(15),
+                onPressed: () {},
+                child: Text('Create Password'),
+              ),
+              RaisedButton(
+                onPressed: () {},
+                child: Text('OK'),
+              )
+            ],
           )
         ],
       ),
