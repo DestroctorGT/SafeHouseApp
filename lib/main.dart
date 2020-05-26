@@ -101,63 +101,66 @@ class _CardGeneratorState extends State<CardGenerator> {
       appBar: AppBar(
         title: Center(child: Text('SafeHouse')),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(
-            height: 50,
-          ),
-          Container(
-            child: new Image.asset(
-              Get.arguments,
-              width: 150,
-              height: 150,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 50,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          TextField(
-            controller: textFieldController,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(20),
-              filled: true,
-              labelText: 'User',
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(20),
-              filled: true,
-              labelText: 'Password',
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              RaisedButton(
-                padding: EdgeInsets.all(15),
-                onPressed: () {},
-                child: Text('Create Password'),
+            Container(
+              child: new Image.asset(
+                Get.arguments,
+                width: 150,
+                height: 150,
               ),
-              RaisedButton(
-                padding: EdgeInsets.all(15),
-                onPressed: () {
-                  myPasswordCards.addCards(
-                      image: Get.arguments, user: textFieldController.text);
-                  Get.offAllNamed(routes.routeNameFirst());
-                },
-                child: Text('OK'),
-              )
-            ],
-          )
-        ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextField(
+              controller: textFieldController,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(20),
+                filled: true,
+                labelText: 'User',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextField(
+              enabled: false,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(20),
+                filled: true,
+                labelText: 'Password',
+              ),
+            ),
+            SizedBox(
+              height: 70,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                RaisedButton(
+                  padding: EdgeInsets.all(15),
+                  onPressed: () {},
+                  child: Text('Create Password'),
+                ),
+                RaisedButton(
+                  padding: EdgeInsets.all(15),
+                  onPressed: () {
+                    myPasswordCards.addCards(
+                        image: Get.arguments, user: textFieldController.text);
+                    Get.offAllNamed(routes.routeNameFirst());
+                  },
+                  child: Text('OK'),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
