@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:safehouseapp/passwordCardManager.dart';
 import 'accountImagesManager.dart';
 import 'routesManager.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 void main() => runApp(MyApp());
 
 RoutesManager routes = RoutesManager();
+PasswordCardManager myPasswordCards = PasswordCardManager();
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -34,13 +36,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Card> passwordCards = [
-    Card(
-      child: Center(
-        child: Text('Prueba'),
-      ),
-    )
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         crossAxisCount: 2,
-        children: passwordCards,
+        children: myPasswordCards.returnList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -83,7 +78,20 @@ class PasswordMenu extends StatelessWidget {
   }
 }
 
-class CardGenerator extends StatelessWidget {
+class CardGenerator extends StatefulWidget {
+  @override
+  _CardGeneratorState createState() => _CardGeneratorState();
+}
+
+class _CardGeneratorState extends State<CardGenerator> {
+  final textFieldController = TextEditingController();
+
+  @override
+  void dispose() {
+    textFieldController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +115,7 @@ class CardGenerator extends StatelessWidget {
             height: 20,
           ),
           TextField(
+            controller: textFieldController,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(20),
               filled: true,
@@ -135,7 +144,12 @@ class CardGenerator extends StatelessWidget {
                 child: Text('Create Password'),
               ),
               RaisedButton(
-                onPressed: () {},
+                padding: EdgeInsets.all(15),
+                onPressed: () {
+                  myPasswordCards.addCards(
+                      image: Get.arguments, user: textFieldController.text);
+                  Get.offAllNamed(routes.routeNameFirst());
+                },
                 child: Text('OK'),
               )
             ],
