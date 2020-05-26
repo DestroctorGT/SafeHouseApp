@@ -33,6 +33,18 @@ class AccountImagesManager {
         ),
       ),
     ),
+    FlatButton(
+      onPressed: () {
+        Get.toNamed(routes.routeNameThird(), arguments: _accountImagesNames[2]);
+      },
+      child: Center(
+        child: new Image.asset(
+          'images/Gmail.png',
+          width: 120,
+          height: 120,
+        ),
+      ),
+    ),
   ];
 
   //Metodo encargado de retornar todas las imagenes almacenadas en la lista.
@@ -44,5 +56,6 @@ class AccountImagesManager {
 //Lista de String que almacena el nombre de la ruta donde se encuentra las imagenes.
 List<String> _accountImagesNames = [
   'images/twitter logo.png',
-  'images/steam logo.png'
+  'images/steam logo.png',
+  'images/Gmail.png'
 ];
