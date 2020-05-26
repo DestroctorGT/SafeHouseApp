@@ -7,7 +7,10 @@ import 'package:get/get.dart';
 
 void main() => runApp(MyApp());
 
+//Referencia a la clase RoutesManager.
 RoutesManager routes = RoutesManager();
+
+//Referencia a la clase PasswordCardManager.
 PasswordCardManager myPasswordCards = PasswordCardManager();
 
 class MyApp extends StatelessWidget {
