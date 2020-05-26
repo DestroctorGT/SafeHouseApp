@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'routesManager.dart';
 import 'package:get/get.dart';
 
+//Referencia a la clase RoutesManager.
 RoutesManager routes = RoutesManager();
 
 class AccountImagesManager {
+  //Lista de FlatButton encargado de almacenar todas las imagenes de las cuentas disponibles en la app.
   List<FlatButton> _accountImages = [
     FlatButton(
       onPressed: () {
@@ -33,11 +35,13 @@ class AccountImagesManager {
     ),
   ];
 
+  //Metodo encargado de retornar todas las imagenes almacenadas en la lista.
   List<FlatButton> imagesReturn() {
     return _accountImages;
   }
 }
 
+//Lista de String que almacena el nombre de la ruta donde se encuentra las imagenes.
 List<String> _accountImagesNames = [
   'images/twitter logo.png',
   'images/steam logo.png'
