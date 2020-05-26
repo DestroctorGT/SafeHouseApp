@@ -108,33 +108,38 @@ class _CardGeneratorState extends State<CardGenerator> {
             SizedBox(
               height: 50,
             ),
-            Container(
-              child: new Image.asset(
-                Get.arguments,
-                width: 150,
-                height: 150,
+            Flexible(
+              child: Container(
+                child: new Image.asset(
+                  Get.arguments,
+                  width: 150,
+                  height: 150,
+                ),
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            TextField(
-              controller: textFieldController,
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(20),
-                filled: true,
-                labelText: 'User',
+            Flexible(
+              child: TextField(
+                controller: textFieldController,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(20),
+                  filled: true,
+                  labelText: 'User',
+                ),
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            TextField(
-              enabled: false,
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(20),
-                filled: true,
-                labelText: 'Password',
+            Flexible(
+              child: TextField(
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(20),
+                  filled: true,
+                  labelText: 'Password',
+                ),
               ),
             ),
             SizedBox(
