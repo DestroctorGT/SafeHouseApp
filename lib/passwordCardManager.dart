@@ -7,6 +7,8 @@ class PasswordCardManager {
   //Metodo encargado de retornar la lista de cards.
   List returnList() => _passwordCards;
 
+  void deleteCards() => _passwordCards.removeAt(_passwordCards.length);
+
   //Metodo encargado de agregar nuevas cards a la lista.
   void addCards({String image, String user}) {
     _passwordCards.add(Card(
@@ -29,6 +31,10 @@ class PasswordCardManager {
             height: 10,
           ),
           Text('Contraseña'),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.remove),
+          )
         ],
       ),
     ));
