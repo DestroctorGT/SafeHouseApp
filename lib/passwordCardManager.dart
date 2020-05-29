@@ -7,7 +7,8 @@ class PasswordCardManager {
   //Metodo encargado de retornar la lista de cards.
   List returnList() => _passwordCards;
 
-  void deleteCards() => _passwordCards.removeAt(_passwordCards.length);
+  //Metodo encargado para eliminar las Card en la lista.
+  void deleteCards() => _passwordCards.removeLast();
 
   //Metodo encargado de agregar nuevas cards a la lista.
   void addCards({String image, String user}) {
@@ -15,26 +16,34 @@ class PasswordCardManager {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            height: 20,
+          Expanded(
+            child: IconButton(
+              padding: EdgeInsets.only(left: 150),
+              color: Colors.red,
+              onPressed: () {},
+              icon: Icon(Icons.delete_outline),
+            ),
           ),
           new Image.asset(
             image,
-            width: 90,
-            height: 90,
+            width: 75,
+            height: 75,
           ),
           SizedBox(
             height: 10,
           ),
-          Text(user),
-          SizedBox(
-            height: 10,
-          ),
-          Text('Contraseña'),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.remove),
-          )
+          Expanded(
+              child: Text(
+            user,
+            textScaleFactor: 1.5,
+            textAlign: TextAlign.center,
+          )),
+          Expanded(
+              child: Text(
+            'Contraseña',
+            textScaleFactor: 1.5,
+            textAlign: TextAlign.center,
+          )),
         ],
       ),
     ));
