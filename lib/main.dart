@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: myPasswordCards.returnList(),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueAccent,
         onPressed: () {
           Get.toNamed(routes.routeNameSecond());
         },
@@ -68,6 +69,7 @@ class CardGenerator extends StatefulWidget {
 }
 
 class _CardGeneratorState extends State<CardGenerator> {
+  final _formKey = GlobalKey<FormState>();
   final textFieldController = TextEditingController();
 
   @override
@@ -82,7 +84,8 @@ class _CardGeneratorState extends State<CardGenerator> {
       appBar: AppBar(
         title: Center(child: Text('SafeHouse')),
       ),
-      body: SafeArea(
+      body: Form(
+        key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -102,24 +105,42 @@ class _CardGeneratorState extends State<CardGenerator> {
               height: 20,
             ),
             Flexible(
-              child: TextField(
-                controller: textFieldController,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(20),
-                  filled: true,
-                  labelText: 'User',
+              child: Container(
+                margin: EdgeInsets.all(20),
+                child: TextFormField(
+                  // ignore: missing_return
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter your username';
+                    }
+                  },
+                  controller: textFieldController,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(20),
+                    filled: true,
+                    labelText: 'User',
+                  ),
                 ),
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Flexible(
-              child: TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(20),
-                  filled: true,
-                  labelText: 'Password',
+              child: Container(
+                margin: EdgeInsets.all(20),
+                child: TextFormField(
+                  // ignore: missing_return
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'No password';
+                    }
+                  },
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(20),
+                    filled: true,
+                    labelText: 'Password',
+                  ),
                 ),
               ),
             ),
@@ -129,19 +150,30 @@ class _CardGeneratorState extends State<CardGenerator> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                RaisedButton(
-                  padding: EdgeInsets.all(15),
-                  onPressed: () {},
-                  child: Text('Create Password'),
+                Container(
+                  margin: EdgeInsets.all(20),
+                  child: RaisedButton(
+                    color: Colors.blueAccent,
+                    padding: EdgeInsets.all(15),
+                    onPressed: () {},
+                    child: Text('Create Password'),
+                  ),
                 ),
-                RaisedButton(
-                  padding: EdgeInsets.all(15),
-                  onPressed: () {
-                    myPasswordCards.addCards(
-                        image: Get.arguments, user: textFieldController.text);
-                    Get.offAllNamed(routes.routeNameFirst());
-                  },
-                  child: Text('OK'),
+                Container(
+                  margin: EdgeInsets.all(20),
+                  child: RaisedButton(
+                    color: Colors.blueAccent,
+                    padding: EdgeInsets.all(15),
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        myPasswordCards.addCards(
+                            image: Get.arguments,
+                            user: textFieldController.text);
+                        Get.offAllNamed(routes.routeNameFirst());
+                      }
+                    },
+                    child: Text('OK'),
+                  ),
                 )
               ],
             )
