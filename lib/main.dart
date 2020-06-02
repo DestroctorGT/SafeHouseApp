@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:safehouseapp/passwordGenerator.dart';
 import 'passwordCardManager.dart';
 import 'routesManager.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,9 @@ RoutesManager routes = RoutesManager();
 
 //Referencia a la clase PasswordCardManager.
 PasswordCardManager myPasswordCards = PasswordCardManager();
+
+//Referencia a la clase PasswordGenerator.
+PasswordGenerator passwords = PasswordGenerator();
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -155,7 +159,9 @@ class _CardGeneratorState extends State<CardGenerator> {
                   child: RaisedButton(
                     color: Colors.blueAccent,
                     padding: EdgeInsets.all(15),
-                    onPressed: () {},
+                    onPressed: () {
+                      passwords.createNormalPassword();
+                    },
                     child: Text('Create Password'),
                   ),
                 ),
