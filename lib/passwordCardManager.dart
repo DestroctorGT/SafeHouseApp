@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'routesManager.dart';
+
+//Referencia a la clase RoutesManager.
+RoutesManager routes = RoutesManager();
 
 class PasswordCardManager {
   //Lista de Cards encargada de agregar todas las cuentas que cree el usuario.
@@ -20,7 +25,9 @@ class PasswordCardManager {
             child: IconButton(
               padding: EdgeInsets.only(left: 150),
               color: Colors.red,
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(routes.routeNameFourth());
+              },
               icon: Icon(Icons.delete_outline),
             ),
           ),
