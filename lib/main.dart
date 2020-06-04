@@ -74,11 +74,13 @@ class CardGenerator extends StatefulWidget {
 
 class _CardGeneratorState extends State<CardGenerator> {
   final _formKey = GlobalKey<FormState>();
-  final textFieldController = TextEditingController();
+  final textPasswordController = TextEditingController();
+  final textUserController = TextEditingController();
 
   @override
   void dispose() {
-    textFieldController.dispose();
+    textPasswordController.dispose();
+    textUserController.dispose();
     super.dispose();
   }
 
@@ -112,13 +114,13 @@ class _CardGeneratorState extends State<CardGenerator> {
               child: Container(
                 margin: EdgeInsets.all(20),
                 child: TextFormField(
+                  controller: textUserController,
                   // ignore: missing_return
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Enter your username';
                     }
                   },
-                  controller: textFieldController,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(20),
                     filled: true,
@@ -134,6 +136,8 @@ class _CardGeneratorState extends State<CardGenerator> {
               child: Container(
                 margin: EdgeInsets.all(20),
                 child: TextFormField(
+                  readOnly: true,
+                  controller: textPasswordController,
                   // ignore: missing_return
                   validator: (value) {
                     if (value.isEmpty) {
@@ -161,6 +165,8 @@ class _CardGeneratorState extends State<CardGenerator> {
                     padding: EdgeInsets.all(15),
                     onPressed: () {
                       passwords.createNormalPassword();
+                      textPasswordController.text =
+                          passwords.createNormalPassword();
                     },
                     child: Text('Create Password'),
                   ),
@@ -174,7 +180,8 @@ class _CardGeneratorState extends State<CardGenerator> {
                       if (_formKey.currentState.validate()) {
                         myPasswordCards.addCards(
                             image: Get.arguments,
-                            user: textFieldController.text);
+                            user: textUserController.text,
+                            password: textPasswordController.text);
                         Get.offAllNamed(routes.routeNameFirst());
                       }
                     },
