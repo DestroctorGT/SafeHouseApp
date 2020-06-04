@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PasswordCardDeleteManager extends StatefulWidget {
   @override
@@ -22,6 +23,7 @@ class _PasswordCardDeleteManagerState extends State<PasswordCardDeleteManager> {
             child: Container(
               margin: EdgeInsets.all(20),
               child: TextFormField(
+                initialValue: Get.arguments.toString(),
                 // ignore: missing_return
                 validator: (value) {
                   if (value.isEmpty) {
