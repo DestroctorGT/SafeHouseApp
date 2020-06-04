@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+//Esta route sera agregada despues.
+//No estara agregada en la primera version.
 class PasswordCardDeleteManager extends StatefulWidget {
   @override
   _PasswordCardDeleteManagerState createState() =>
