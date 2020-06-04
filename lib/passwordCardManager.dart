@@ -11,7 +11,7 @@ class PasswordCardManager {
   void deleteCards() => _passwordCards.removeLast();
 
   //Metodo encargado de agregar nuevas cards a la lista.
-  void addCards({String image, String user}) {
+  void addCards({String image, String user, String password}) {
     _passwordCards.add(Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,7 +40,7 @@ class PasswordCardManager {
           )),
           Expanded(
               child: Text(
-            'Contraseña',
+            password,
             textScaleFactor: 1.5,
             textAlign: TextAlign.center,
           )),
