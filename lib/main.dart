@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:safehouseapp/passwordCardDeleteManager.dart';
 import 'package:safehouseapp/passwordGenerator.dart';
 import 'passwordCardManager.dart';
 import 'routesManager.dart';
 import 'package:get/get.dart';
 import 'passwordMenu.dart';
+import 'passwordCardDeleteManager.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
         routes.routeNameFirst(): GetRoute(page: MyHomePage()),
         routes.routeNameSecond(): GetRoute(page: PasswordMenu()),
         routes.routeNameThird(): GetRoute(page: CardGenerator()),
+        routes.routeNameFourth(): GetRoute(page: PasswordCardDeleteManager())
       },
     );
   }
