@@ -88,7 +88,7 @@ class PasswordGenerator {
   List _arrayNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   //Metodo encargado de generar nuevas contraseñas sin restriciones.
-  void createNormalPassword() {
+  String createNormalPassword() {
     String randomChar = _arrayChar[Random().nextInt(_arrayChar.length)];
     String rc = randomChar;
 
@@ -125,5 +125,7 @@ class PasswordGenerator {
         _arrayCombinationF[9];
 
     print('Nueva contra: ' + newPassword);
+
+    return newPassword;
   }
 }
