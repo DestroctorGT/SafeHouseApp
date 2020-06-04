@@ -26,7 +26,8 @@ class PasswordCardManager {
               padding: EdgeInsets.only(left: 150),
               color: Colors.red,
               onPressed: () {
-                Get.toNamed(routes.routeNameFourth());
+                _passwordCards.removeAt(_passwordCards.length - 1);
+                Get.offAllNamed(routes.routeNameFirst());
               },
               icon: Icon(Icons.delete_outline),
             ),
