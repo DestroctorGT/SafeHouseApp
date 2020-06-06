@@ -19,6 +19,9 @@ PasswordCardManager myPasswordCards = PasswordCardManager();
 //Referencia a la clase PasswordGenerator.
 PasswordGenerator passwords = PasswordGenerator();
 
+//Variable que sigue el conteo de la lista de Cards.
+int indexP = 1;
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -184,7 +187,8 @@ class _CardGeneratorState extends State<CardGenerator> {
                         myPasswordCards.addCards(
                             image: Get.arguments,
                             user: textUserController.text,
-                            password: textPasswordController.text);
+                            password: textPasswordController.text,
+                            index: indexP++);
                         Get.offAllNamed(routes.routeNameFirst());
                       }
                     },
