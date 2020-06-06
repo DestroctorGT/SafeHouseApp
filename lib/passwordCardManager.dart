@@ -13,13 +13,10 @@ class PasswordCardManager {
   List returnList() => _passwordCards;
 
   //Metodo encargado para eliminar las Card en la lista.
-  void deleteCards() => _passwordCards.removeLast();
-
-  int passwordIndex = 0;
+  void deleteCards(int index) => _passwordCards.removeAt(index - 1);
 
   //Metodo encargado de agregar nuevas cards a la lista.
-  void addCards({String image, String user, String password}) {
-    passwordIndex++;
+  void addCards({String image, String user, String password, int index}) {
     _passwordCards.add(Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,7 +26,9 @@ class PasswordCardManager {
               padding: EdgeInsets.only(left: 150),
               color: Colors.red,
               onPressed: () {
-                //_passwordCards.removeAt(_passwordCards.length - 1);
+                print(_passwordCards.length);
+                print(index);
+                deleteCards(index);
                 Get.offAllNamed(routes.routeNameFirst());
               },
               icon: Icon(Icons.delete_outline),
