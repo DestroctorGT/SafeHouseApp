@@ -20,7 +20,7 @@ PasswordCardManager myPasswordCards = PasswordCardManager();
 PasswordGenerator passwords = PasswordGenerator();
 
 //Variable que sigue el conteo de la lista de Cards.
-int indexP = 1;
+int indexP = 0;
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -184,6 +184,7 @@ class _CardGeneratorState extends State<CardGenerator> {
                     padding: EdgeInsets.all(15),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
+                        myPasswordCards.checkList();
                         myPasswordCards.addCards(
                             image: Get.arguments,
                             user: textUserController.text,
