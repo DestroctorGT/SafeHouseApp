@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:safehouseapp/main.dart';
 import 'routesManager.dart';
 
 //Referencia a la clase RoutesManager.
@@ -9,11 +10,22 @@ class PasswordCardManager {
   //Lista de Cards encargada de agregar todas las cuentas que cree el usuario.
   List<Card> _passwordCards = [];
 
+  List<Card> _passwordCardsSaved = [];
+
   //Metodo encargado de retornar la lista de cards.
   List returnList() => _passwordCards;
 
   //Metodo encargado para eliminar las Card en la lista.
-  void deleteCards(int index) => _passwordCards.removeAt(index - 1);
+  void deleteCards(int index) {
+    _passwordCards.removeAt(index);
+    _passwordCardsSaved.add(_passwordCards[index + 1]);
+  }
+
+  void checkList() {
+    if (_passwordCards.isEmpty) {
+      indexP = 0;
+    }
+  }
 
   //Metodo encargado de agregar nuevas cards a la lista.
   void addCards({String image, String user, String password, int index}) {
@@ -26,9 +38,10 @@ class PasswordCardManager {
               padding: EdgeInsets.only(left: 150),
               color: Colors.red,
               onPressed: () {
-                print(_passwordCards.length);
-                print(index);
                 deleteCards(index);
+                print(_passwordCards.length);
+                print(_passwordCards.toString());
+                print(index);
                 Get.offAllNamed(routes.routeNameFirst());
               },
               icon: Icon(Icons.delete_outline),
