@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:safehouseapp/main.dart';
@@ -18,7 +20,13 @@ class PasswordCardManager {
   //Metodo encargado para eliminar las Card en la lista.
   void deleteCards(int index) {
     _passwordCards.removeAt(index);
-    _passwordCardsSaved.add(_passwordCards[index + 1]);
+
+    if (index < _passwordCards.length) {
+      _passwordCards.insert(index, Card());
+      _passwordCardsSaved.add(_passwordCards[index + 1]);
+      _passwordCards[index] = _passwordCardsSaved.first;
+      _passwordCards.removeAt(index + 1);
+    }
   }
 
   void checkList() {
@@ -40,8 +48,8 @@ class PasswordCardManager {
               onPressed: () {
                 deleteCards(index);
                 print(_passwordCards.length);
-                print(_passwordCards.toString());
                 print(index);
+                print(_passwordCards.toString());
                 Get.offAllNamed(routes.routeNameFirst());
               },
               icon: Icon(Icons.delete_outline),
