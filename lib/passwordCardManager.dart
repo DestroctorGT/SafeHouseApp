@@ -22,6 +22,7 @@ class PasswordCardManager {
     _passwordCards.removeAt(index);
 
     if (index < _passwordCards.length) {
+      print('funciona');
       _passwordCards.insert(index, Card());
       _passwordCardsSaved.add(_passwordCards[index + 1]);
       _passwordCards[index] = _passwordCardsSaved.first;
@@ -47,8 +48,9 @@ class PasswordCardManager {
               color: Colors.red,
               onPressed: () {
                 deleteCards(index);
-                print(_passwordCards.length);
-                print(index);
+                print('PasswordCards Length: ' +
+                    _passwordCards.length.toString());
+                print('Index: ' + index.toString());
                 print(_passwordCards.toString());
                 Get.offAllNamed(routes.routeNameFirst());
               },
