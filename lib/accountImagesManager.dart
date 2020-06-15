@@ -56,6 +56,18 @@ class AccountImagesManager {
           height: 120,
         ),
       ),
+    ),
+    FlatButton(
+      onPressed: () {
+        Get.toNamed(routes.routeNameThird(), arguments: _accountImagesNames[4]);
+      },
+      child: Center(
+        child: new Image.asset(
+          _accountImagesNames[4],
+          width: 120,
+          height: 120,
+        ),
+      ),
     )
   ];
 
@@ -70,5 +82,6 @@ List<String> _accountImagesNames = [
   'images/twitter logo.png',
   'images/steam logo.png',
   'images/Gmail.png',
-  'images/instagram logo.png'
+  'images/instagram logo.png',
+  'images/itch.io.png'
 ];
