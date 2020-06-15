@@ -19,14 +19,10 @@ class PasswordCardManager {
 
   //Metodo encargado para eliminar las Card en la lista.
   void deleteCards(int index) {
-    _passwordCards.removeAt(index);
-
-    if (index < _passwordCards.length) {
-      print('funciona');
-      _passwordCards.insert(index, Card());
-      _passwordCardsSaved.add(_passwordCards[index + 1]);
-      _passwordCards[index] = _passwordCardsSaved.first;
-      _passwordCards.removeAt(index + 1);
+    if (index >= _passwordCards.length) {
+      _passwordCards.removeAt(index - 1);
+    } else {
+      _passwordCards.removeAt(index);
     }
   }
 
