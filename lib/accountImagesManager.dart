@@ -15,7 +15,7 @@ class AccountImagesManager {
       },
       child: Center(
         child: new Image.asset(
-          'images/twitter logo.png',
+          _accountImagesNames[0],
           width: 120,
           height: 120,
         ),
@@ -27,7 +27,7 @@ class AccountImagesManager {
       },
       child: Center(
         child: new Image.asset(
-          'images/steam logo.png',
+          _accountImagesNames[1],
           width: 120,
           height: 120,
         ),
@@ -39,12 +39,24 @@ class AccountImagesManager {
       },
       child: Center(
         child: new Image.asset(
-          'images/Gmail.png',
+          _accountImagesNames[2],
           width: 120,
           height: 120,
         ),
       ),
     ),
+    FlatButton(
+      onPressed: () {
+        Get.toNamed(routes.routeNameThird(), arguments: _accountImagesNames[3]);
+      },
+      child: Center(
+        child: new Image.asset(
+          _accountImagesNames[3],
+          width: 120,
+          height: 120,
+        ),
+      ),
+    )
   ];
 
   //Metodo encargado de retornar todas las imagenes almacenadas en la lista.
@@ -57,5 +69,6 @@ class AccountImagesManager {
 List<String> _accountImagesNames = [
   'images/twitter logo.png',
   'images/steam logo.png',
-  'images/Gmail.png'
+  'images/Gmail.png',
+  'images/instagram logo.png'
 ];
